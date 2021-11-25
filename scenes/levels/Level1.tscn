@@ -1,0 +1,163 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://tilesets/world_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://ASSETS/background/BG1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/props/coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/other/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ASSETS/fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://scenes/props/Flag.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/props/enemy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scripts/levels/Level1.gd" type="Script" id=11]
+[ext_resource path="res://ASSETS/sounds/field.ogg" type="AudioStream" id=14]
+[ext_resource path="res://scenes/props/block.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/props/Spike.tscn" type="PackedScene" id=16]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2738.16, 90.787 )
+
+[node name="Level1" type="Node2D"]
+script = ExtResource( 11 )
+
+[node name="Niveau" type="Label" parent="."]
+margin_left = -240.0
+margin_top = 232.0
+margin_right = 52.0
+margin_bottom = 271.0
+custom_fonts/font = SubResource( 1 )
+text = "LEVELSIGN_LEVEL"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Niveau2" type="Label" parent="."]
+margin_left = -280.0
+margin_top = 272.0
+margin_right = -48.0
+margin_bottom = 311.0
+custom_fonts/font = SubResource( 1 )
+text = "WORLDMAP_INFO_LEVEL1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Niveau3" type="Label" parent="."]
+margin_left = -32.0
+margin_top = 232.0
+margin_right = 13.0
+margin_bottom = 271.0
+custom_fonts/font = SubResource( 1 )
+text = "1-1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tiles Solid2" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 2
+collision_mask = 49
+format = 1
+tile_data = PoolIntArray( -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 2, 0, -196599, 12, 0, -196598, 14, 0, -196595, 0, 0, -196594, 1, 0, -196593, 1, 0, -131072, 8, 0, -131071, 8, 0, -131070, 8, 0, -131069, 15, 0, -131066, 12, 0, -131065, 14, 0, -131059, 11, 0, -131058, 8, 0, -131057, 8, 0, 65539, 12, 0, 65540, 13, 0, 65541, 14, 0, 65544, 0, 0, 65545, 1, 0, 65546, 2, 0, 131080, 3, 0, 131081, 4, 0, 131082, 5, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 16, 0, 262149, 16, 0, 262150, 16, 0, 262157, 16, 0, 262158, 16, 0, 327680, 4, 0, 327681, 4, 0, 327682, 4, 0, 327683, 17, 0, 327685, 17, 0, 327686, 17, 0, 327693, 17, 0, 327694, 17, 0 )
+
+[node name="Tiles Solid" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 2
+collision_mask = 49
+format = 1
+tile_data = PoolIntArray( 196608, 1, 0, 196609, 2, 0, 196614, 0, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 2, 0, 262144, 1, 0, 262145, 1, 0, 262147, 2, 0, 262148, 16, 0, 262150, 3, 0, 262151, 4, 0, 262152, 4, 0, 262153, 4, 0, 262154, 4, 0, 262155, 9, 0, 262156, 1, 0, 262157, 2, 0, 262159, 16, 0, 327680, 4, 0, 327681, 4, 0, 327683, 5, 0, 327684, 17, 0, 327686, 3, 0, 327687, 4, 0, 327688, 4, 0, 327689, 4, 0, 327690, 4, 0, 327691, 4, 0, 327692, 4, 0, 327693, 5, 0, 327695, 17, 0 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Purple Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 2000, 1500 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Purple Sky"]
+position = Vector2( 0, -778 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1820, 960 )
+
+[node name="Flag" parent="." instance=ExtResource( 9 )]
+position = Vector2( 4228, -428 )
+
+[node name="fallzone" type="Area2D" parent="."]
+position = Vector2( 3136, 1024 )
+collision_layer = 4
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fallzone"]
+shape = SubResource( 4 )
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+
+[node name="coins" type="Node2D" parent="."]
+visible = false
+
+[node name="coin1" parent="coins" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 448, 192 )
+
+[node name="coin2" parent="coins" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 2655, 320 )
+
+[node name="coin3" parent="coins" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 1664, -192 )
+
+[node name="enemies" type="Node2D" parent="."]
+visible = false
+
+[node name="enemy1" parent="enemies" instance=ExtResource( 10 )]
+visible = false
+position = Vector2( 576, 476 )
+detects_cliffs = false
+
+[node name="enemy2" parent="enemies" instance=ExtResource( 10 )]
+visible = false
+position = Vector2( 320, 192 )
+detects_cliffs = false
+
+[node name="enemy3" parent="enemies" instance=ExtResource( 10 )]
+visible = false
+position = Vector2( 512, -64 )
+direction = 1
+
+[node name="blocks" type="Node2D" parent="."]
+visible = false
+
+[node name="block1" parent="blocks" instance=ExtResource( 15 )]
+visible = false
+position = Vector2( -448, 320 )
+trap = true
+
+[node name="spikes" type="Node2D" parent="."]
+visible = false
+
+[node name="Spike1" parent="spikes" instance=ExtResource( 16 )]
+visible = false
+position = Vector2( 2492, 488 )
+
+[node name="Musique" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+autoplay = true
+
+[connection signal="coin_collected" from="coins/coin1" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="coins/coin2" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="coins/coin3" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="blocks/block1" to="HUD" method="_on_coin_collected"]
